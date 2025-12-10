@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Secret for Akshay!</title>
+<style>
+    /* Keyframe Animations */
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes floating {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    /* Page Styles */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #ffe6e6;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Cover Box */
+    #cover-box {
+        width: 300px;
+        height: 150px;
+        background-color: #ff69b4;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: opacity 0.5s, transform 0.5s;
+        font-size: 1.5em;
+        font-weight: bold;
+        letter-spacing: 1px;
+        z-index: 10;
+        animation: floating 3s ease-in-out infinite;
+    }
+
+    /* Secret Message */
+    #secret-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        padding: 30px;
+        background-color: white;
+        border: 5px solid #ff69b4;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        font-size: 1.2em;
+        color: #333;
+        max-width: 80%;
+        transition: opacity 1s;
+    }
+
+    #secret-message.visible {
+        opacity: 1;
+    }
+
+    .heart {
+        color: #ff69b4;
+        font-size: 2em;
+        margin-bottom: 10px;
+        animation: heartbeat 1.5s infinite, floating 3s ease-in-out infinite;
+    }
+
+    p {
+        margin: 15px 0;
+        line-height: 1.5em;
+    }
+</style>
+</head>
+<body>
+
+    <div id="cover-box" onclick="revealMessage()">
+        <span class="heart">❤️</span>
+        Click Me, Akshay!
+    </div>
+
+    <div id="secret-message">
+        <div class="heart">💖💖💖</div>
+        <p><b>My Dearest Love,</b></p>
+        <p>I created this just for you to <b>remind you</b> how much you mean to me. You are my greatest surprise and my favorite person <b>in</b> the entire <b>world</b>. Every day with you is a gift.</p>
+        <p>You make my heart so happy. I love you so much!</p>
+        <div class="heart">💖💖💖</div>
+    </div>
+
+    <script>
+        function revealMessage() {
+            const cover = document.getElementById('cover-box');
+            const message = document.getElementById('secret-message');
+
+            cover.style.opacity = '0';
+            cover.style.transform = 'scale(0.8)';
+
+            setTimeout(() => {
+                cover.style.display = 'none';
+                message.classList.add('visible');
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
